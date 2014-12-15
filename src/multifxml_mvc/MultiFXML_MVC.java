@@ -19,12 +19,16 @@ public class MultiFXML_MVC extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FirstNameView.fxml"));
-        
-        Scene scene = new Scene(root);
-        
+        Parent root = FXMLLoader.load(getClass().getResource("PersonView.fxml"));        
+        Scene scene = new Scene(root);        
         stage.setScene(scene);
         stage.show();
+        
+//        Parent root2 = FXMLLoader.load(getClass().getResource("LastNameView.fxml"));        
+//        Scene scene2 = new Scene(root2);        
+//        Stage stage2 = new Stage();
+//        stage2.setScene(scene2);
+//        stage2.show();
     }
 
     /**
