@@ -5,10 +5,9 @@
  */
 package multifxml_mvc;
 
+import java.beans.PropertyChangeListener;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -34,11 +33,20 @@ public class FirstNameController implements Initializable {
     private void firstNameTextFieldAction(ActionEvent event) {      
         fnModel.setFirstName(firstNameTextField.getText());
         System.out.println(fnModel.getFirstName());
+        
+        // can't do with a uni-bound var, will work with bindBidirectional
+        //firstNameValue.setText("bar");
+        //System.out.println(fnModel.getFirstName());
     }   
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        firstNameValue.textProperty().bindBidirectional(fnModel.firstNameProperty());
-    }    
+        //firstNameValue.textProperty().bindBidirectional(fnModel.firstNameProperty());
+        firstNameValue.textProperty().bind(fnModel.firstNameProperty());                            
+    } 
+    
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+      fnModel.addPropertyChangeListener(listener);
+   }
     
 }

@@ -5,6 +5,7 @@
  */
 package multifxml_mvc;
 
+import java.beans.PropertyChangeListener;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
@@ -38,7 +39,11 @@ public class LastNameController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        lastNameValue.textProperty().bindBidirectional(lnModel.lastNameProperty());
+        lastNameValue.textProperty().bind(lnModel.lastNameProperty());
     }    
+    
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+      lnModel.addPropertyChangeListener(listener);
+   }
     
 }
